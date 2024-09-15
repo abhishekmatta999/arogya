@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #009688;
+            font-size: 16px; /* Main heading font size */
+            margin-bottom: 20px;
+        }
+        .day {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        .day h2 {
+            color: #00796b;
+            font-size: 14px; /* Day heading font size */
+            margin: 0 0 10px 0;
+        }
+        .meal-type {
+            font-size: 10px; /* Meal type font size */
+            font-weight: bold;
+            color: #00796b;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 6px;
+            text-align: left;
+            font-size: 8px; /* Table body font size */
+        }
+        th {
+            background-color: #009688;
+            color: white;
+            font-size: 8px; /* Table heading font size */
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        th:nth-child(1) {
+            width: 400px;
+        }
+        /* Prevent row splitting across pages */
+        table {
+            page-break-inside: auto;
+        }
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 6px; /* Footer font size */
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weekly Diet Plan</h1>
+    <% data.forEach(day => { %>
+        <div class="day">
+            <h2><%= day.name %></h2>
+            <% day.meals.forEach(meal => { %>
+                <div class="meal-type"><%= meal.meal_type %></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Quantity</th>
+                            <th>Calories</th>
+                            <th>Protein</th>
+                            <th>Fiber</th>
+                            <th>Fat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%= meal.items.name %></td>
+                            <td><%= meal.items.type %></td>
+                            <td><%= meal.items.quantity %></td>
+                            <td><%= meal.items.calories %></td>
+                            <td><%= meal.items.protein %></td>
+                            <td><%= meal.items.fiber %></td>
+                            <td><%= meal.items.fat %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <% }) %>
+        </div>
+    <% }) %>
+    <div class="footer">
+        Arogya AI
+    </div>
+</body>
+</html>
